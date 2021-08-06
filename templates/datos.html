@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+<style>
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: sans-serif;
+  background: #f1f1f1;
+}
+nav {
+  background: #222;
+  padding: 5px 20px;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.logo a:hover {
+  text-decoration: none;
+}
+.menu li {
+  font-size: 16px;
+  padding: 15px 5px;
+  white-space: nowrap;
+}
+.logo a,
+.toggle a {
+  font-size: 20px;
+}
+.button.secondary {
+  border-bottom: 1px #444 solid;
+}
+/* Mobile menu */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggle {
+  order: 1;
+}
+.item.button {
+  order: 2;
+}
+.item {
+  width: 100%;
+  text-align: center;
+  order: 3;
+  display: none;
+}
+.item.active {
+  display: block;
+}
+/* Tablet menu */
+@media all and (min-width: 600px) {
+  .menu {
+    justify-content: center;
+  }
+  .logo {
+    flex: 1;
+  }
+  .toggle {
+    flex: 1;
+    text-align: right;
+  }
+  .item.button {
+    width: auto;
+    order: 1;
+    display: block;
+  }
+  .toggle {
+    order: 2;
+  }
+  .button.secondary {
+    border: 0;
+  }
+  .button a {
+    padding: 7.5px 15px;
+    background: teal;
+    border: 1px #006d6d solid;
+  }
+  .button.secondary a {
+    background: transparent;
+  }
+  .button a:hover {
+    text-decoration: none;
+  }
+  .button:not(.secondary) a:hover {
+    background: #006d6d;
+    border-color: #005959;
+  }
+  .button.secondary a:hover {
+    color: #ddd;
+  }
+}
+/* Desktop menu */
+@media all and (min-width: 900px) {
+  .item {
+    display: block;
+    width: auto;
+  }
+  .toggle {
+    display: none;
+  }
+  .logo {
+    order: 0;
+  }
+  .item {
+    order: 1;
+  }
+  .button {
+    order: 2;
+  }
+  .menu li {
+    padding: 15px 10px;
+  }
+  .menu li.button {
+    padding-right: 0;
+  }
+}
+</style>
+<nav>
+  <ul class="menu">
+    <li class="logo"><a href="#">Zodiacales App</a></li>
+    <li class="item"><a href="/Analizar">Analizar Datos</a></li>
+ 
+  </ul>
+</nav>
+<br>
+<div class="container">
+  <center>
+    <button type="button" class="btn btn-info" ><a href="/grafica1">Porcentaje por pregusnta</a></button>
+    <button type="button" class="btn btn-info" > <a href="/grafica2">Grafica de codo</a></button>
+    <button type="button" class="btn btn-info" ><a href="/grafica3">Puntos por pregunta agrupamiento</a></button>
+    <button type="button" class="btn btn-info" ><a href="/grafica4">Grafica K-Means </a></button>
+    <button type="button" class="btn btn-info" ><a href="/grafica5"> Dendograma Signos </a></button>
+    <button type="button" class="btn btn-warning"><a href="/descargar">Exportar Datos</a></button>
+  </center>
+</div>
+<br>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+            <td></td>
+                <td> 
+             
+            
+              <select class="form-control" name="selectuno" required>
+              <option value="" disabled selected >¿Elemento que mas te gusta?</option>
+               
+                <option value="20" disabled>Fuego - 20</option>
+                <option value="20" disabled>Tierra - 20</option>
+                <option value="20" disabled>Agua - 20</option>
+                <option value="20" disabled>Aire - 20</option>
+              </select>
+           </td>
+                <td>
+                    <select class="form-control" name="pregunta2" required>
+                <option value="" disabled selected >¿Color que te gusta mas?</option>
+                <option value="5" disabled>Rojo - 5</option>
+                <option value="30" disabled>Malva - 30</option>
+                <option value="50" disabled>Amarillo - 50</option>
+                <option value="20" disabled>Naranja - 20</option>
+                 <option value="40" disabled>Blanco - 40</option>
+                <option value="60" disabled>Colores pastel - 60</option>
+                <option value="80" disabled>Marron - 80</option>
+                 <option value="20" disabled>Purpura - 20</option>
+                <option value="30" disabled>Verde - 30</option>
+                <option value="70" disabled>Negro - 70</option>
+                 <option value="40" disabled>Azul - 40</option>
+                <option value="80" disabled>Violeta - 80</option>
+              </select>
+                </td>
+                <td>
+          
+              <select class="form-control" name="pregunta3" required>
+                <option value="" disabled selected >¿Qué animal tendrías como mascota?</option>
+                <option value="15" disabled>Perros - 15</option>
+                <option value="10" disabled>Gatos - 10</option>
+                <option value="15" disabled>Peces - 15</option>
+                <option value="15" disabled>Loros - 15</option>
+                 <option value="20" disabled>Hamster - 20</option>
+                <option value="15" disabled>Caballos - 15</option>
+              </select>
+                </td>
+                <td>
+             
+                <select class="form-control" name="pregunta4" required>
+                  <option value="" disabled selected >¿Te gustan los días lluviosos?</option>
+                  <option value="30" disabled>Si - 30</option>
+                  <option value="20" disabled>No - 20</option>
+                  <option value="10" disabled>Casi No - 10</option>
+                  <option value="20" disabled>No Lo Se - 20</option>
+                </select>
+          
+                </td>
+                <td>
+           
+               <select class="form-control" name="pregunta5" required>
+                <option value="" disabled selected >¿Características de tu personalidad?</option>
+                <option value="5" disabled>Aventurero y Lider - 5</option>
+                <option value="20" disabled>Conservador - 20</option>
+                <option value="25" disabled>Amable y Generoso - 25</option>
+                <option value="20" disabled>Timido Y Aburrido - 20</option>
+                 <option value="10" disabled>Valiente y Seguro - 10</option>
+                <option value="20" disabled>Observadr y Paciente - 20</option>
+                <option value="20" disabled>Amable y Elegante - 20</option>
+                 <option value="45" disabled>Fuerza de Voluntad y Tenaz - 45</option>
+                <option value="20" disabled>Negativo - 20</option>
+                <option value="10" disabled>Tranquilo y Estable - 10</option>
+                 <option value="30" disabled>Timido y Sensible - 30</option>
+                <option value="20" disabled>Tranquilo y Amable - 20</option>
+              </select>
+                </td>
+                <td>
+                <select class="form-control" name="pregunta6" required>
+                  <option value="" disabled selected >¿Qué porcentaje de atención necesitas?</option>
+                  <option value="10" disabled>25% - 10</option>
+                  <option value="10" disabled>50% - 10</option>
+                  <option value="10" disabled>75% - 10</option>
+                  <option value="10" disabled>100% - 10</option>
+                </select>
+                </td>
+                <td>
+                
+                <select class="form-control" name="pregunta7" required>
+                  <option value="" disabled selected >¿Qué celebración te emociona más?</option>
+                  <option value="10" disabled>Navidad - 10</option>
+                  <option value="10" disabled>Halloween - 10</option>
+                  <option value="10" disabled>San Valentin - 10</option>
+                  <option value="10" disabled>Dia de Muertos - 10</option>
+                </select>
+                </td>
+                <td>
+              
+              <select class="form-control" name="pregunta8" required>
+                <option value="" disabled selected >¿Cual de las siguientes opciones seria tu espíritu animal?</option>
+                <option value="5" disabled>Tigre - 5</option>
+                <option value="25" disabled >Lobo - 25</option>
+                <option value="60" disabled>Pantera - 60</option>
+                <option value="50" disabled>Perro - 50</option>
+                 <option value="50" disabled>Leon - 50</option>
+                <option value="35" disabled>Aguila - 35</option>
+                <option value="10" disabled>Pavo Real - 10</option>
+                 <option value="50" disabled>Oso Panda - 50</option>
+                <option value="45" disabled>Mono  - 45</option>
+                <option value="35" disabled>Gato - 35</option>
+                 <option value="5" disabled>Caballo - 5</option>
+                <option value="60" disabled>Zorro - 60</option>
+              </select>
+                </td>
+                <td>
+                
+              <select class="form-control" name="pregunta9" required>
+                <option value="" disabled selected >¿Cuál sería tu comida favorita?</option>
+                <option value="15" disabled>Burrito - 15</option>
+                <option value="15" disabled>Carne - 15</option>
+                <option value="35" disabled>Helado - 35</option>
+                <option value="50" disabled>Pastas - 50</option>
+                 <option value="15" disabled>Hamburgesas - 15</option>
+                <option value="25" disabled>Pizza - 25</option>
+                <option value="25" disabled>Ensalada - 25</option>
+                 <option value="25" disabled>Sushi - 25</option>
+                <option value="10" disabled>Pastel de Chocolate - 10</option>
+                 <option value="20" disabled>Pollo - 20</option>
+                <option value="70" disabled>Sanduish de queso - 70</option>
+              </select>
+                </td>
+                <td>
+               <select class="form-control" name="pregunta10" required>
+                <option value="" disabled selected >¿Qué trabajo te gustaría intentar?</option>
+                <option value="5" disabled>Doctor - 5</option>
+                <option value="5"disabled>Ingeniero - 5</option>
+                <option value="15" disabled>Chef - 15</option>
+                <option value="15" disabled>Finanzas - 15</option>
+                 <option value="10" disabled>Periodisto - 10</option>
+                <option value="10" disabled>Politica - 10</option>
+                <option value="10" disabled>Maestro - 10</option>
+                 <option value="25" disabled>Marketing - 25</option>
+                <option value="10" disabled>Turismo - 10</option>
+             
+              </select>
+                </td>
+                <td> Suma Total</td>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for respuesta in respuestas  %}
+            <tr>
+                <th>{{respuesta[1]}}</th>
+                <th>{{respuesta[2]}}</th>
+                <th>{{respuesta[3]}}</th>
+                <th>{{respuesta[4]}}</th>
+                <th>{{respuesta[5]}}</th>
+                <th>{{respuesta[6]}}</th>
+                <th>{{respuesta[7]}}</th>
+                <th>{{respuesta[8]}}</th>
+                <th>{{respuesta[9]}}</th>
+                <th>{{respuesta[10]}}</th>
+                <th>{{respuesta[11]}}</th>
+                <th>{{respuesta[12]}}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

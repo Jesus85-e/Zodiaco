@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<style>
+body {
+  background: #8E2DE2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.container {
+  position: relative;
+ 
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: sans-serif;
+  background: #f1f1f1;
+}
+nav {
+  background: #222;
+  padding: 5px 20px;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.logo a:hover {
+  text-decoration: none;
+}
+.menu li {
+  font-size: 16px;
+  padding: 15px 5px;
+  white-space: nowrap;
+}
+.logo a,
+.toggle a {
+  font-size: 20px;
+}
+.button.secondary {
+  border-bottom: 1px #444 solid;
+}
+/* Mobile menu */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggle {
+  order: 1;
+}
+.item.button {
+  order: 2;
+}
+.item {
+  width: 100%;
+  text-align: center;
+  order: 3;
+  display: none;
+}
+.item.active {
+  display: block;
+}
+/* Tablet menu */
+@media all and (min-width: 600px) {
+  .menu {
+    justify-content: center;
+  }
+  .logo {
+    flex: 1;
+  }
+  .toggle {
+    flex: 1;
+    text-align: right;
+  }
+  .item.button {
+    width: auto;
+    order: 1;
+    display: block;
+  }
+  .toggle {
+    order: 2;
+  }
+  .button.secondary {
+    border: 0;
+  }
+  .button a {
+    padding: 7.5px 15px;
+    background: teal;
+    border: 1px #006d6d solid;
+  }
+  .button.secondary a {
+    background: transparent;
+  }
+  .button a:hover {
+    text-decoration: none;
+  }
+  .button:not(.secondary) a:hover {
+    background: #006d6d;
+    border-color: #005959;
+  }
+  .button.secondary a:hover {
+    color: #ddd;
+  }
+}
+/* Desktop menu */
+@media all and (min-width: 900px) {
+  .item {
+    display: block;
+    width: auto;
+  }
+  .toggle {
+    display: none;
+  }
+  .logo {
+    order: 0;
+  }
+  .item {
+    order: 1;
+  }
+  .button {
+    order: 2;
+  }
+  .menu li {
+    padding: 15px 10px;
+  }
+  .menu li.button {
+    padding-right: 0;
+  }
+}
+$muted: #6c757d;
+
+body {
+  margin: 2rem 0rem;
+  
+  label {
+    color: $muted;
+    display: block;
+    margin-top: 2rem;
+  }
+}
+
+select:invalid { color: gray; }
+</style>
+
+<body>
+<nav>
+  <ul class="menu">
+    <li class="logo"><a href="#">Zodiaco App</a></li>
+    <li class="item"><a href="/verdatos">Verdatos</a></li>
+ 
+  </ul>
+</nav>
+{{message}}
+<br><br>
+<div class="container">
+ <div class="card card-body">
+<h1>Formulario para recopilar datos sobre Signos Zodiacales</h1>
+</div>
+</div>
+<br><br>
+ <div class="container">
+  <div class="card card-body">
+        <form action="/Guardar" method="POST">
+         <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Ingresa tu nombre" autofocus required>
+          </div>
+           <div class="form-group">
+             <label for="pregunta1">¿Elemento que mas te gusta?</label>
+              <select class="form-control" name="selectuno" required>
+              <option value="" disabled selected hidden>Elige tu elemento</option>
+               
+                <option value="20">Fuego</option>
+                <option value="20">Tierra</option>
+                <option value="20">Agua</option>
+                <option value="20">Aire</option>
+              </select>
+           </div>
+           <div class="form-group">
+             <label for="pregunta2">¿Color que te gusta mas?</label>
+              <select class="form-control" name="pregunta2" required>
+                <option value="" disabled selected hidden>Elige tu color</option>
+                <option value="5">Rojo</option>
+                <option value="30">Malva</option>
+                <option value="50">Amarillo</option>
+                <option value="20">Naranja</option>
+                 <option value="40">Blanco</option>
+                <option value="60">Colores pastel</option>
+                <option value="80">Marron</option>
+                 <option value="20">Purpura</option>
+                <option value="30">Verde</option>
+                <option value="70">Negro</option>
+                 <option value="40">Azul</option>
+                <option value="80">Violeta</option>
+              </select>
+           </div>
+          <div class="form-group">
+             <label for="pregunta3">¿Qué animal tendrías como mascota?</label>
+              <select class="form-control" name="pregunta3" required>
+                <option value="" disabled selected hidden>Elige tu mascota</option>
+                <option value="15">Perros</option>
+                <option value="10">Gatos</option>
+                <option value="15">Peces</option>
+                <option value="15">Loros</option>
+                 <option value="20">Hamster</option>
+                <option value="15">Caballos</option>
+              </select>
+           </div>
+            <div class="form-group">
+             <label for="pregunta4">¿Te gustan los días lluviosos?</label>
+              <select class="form-control" name="pregunta4" required>
+                <option value="" disabled selected hidden>Elige tu respuesta</option>
+                <option value="30">Si</option>
+                <option value="20">No</option>
+                <option value="10">Casi No</option>
+                <option value="20">No Lo Se</option>
+              </select>
+           </div>
+             <div class="form-group">
+             <label for="pregunta5">¿Características de tu personalidad?</label>
+              <select class="form-control" name="pregunta5" required>
+                <option value="" disabled selected hidden>Elige tu respuesta</option>
+                <option value="5">Aventurero y Lider</option>
+                <option value="20">Conservador</option>
+                <option value="25">Amable y Generoso</option>
+                <option value="20">Timido Y Aburrido</option>
+                 <option value="10">Valiente y Seguro</option>
+                <option value="20">Observadr y Paciente</option>
+                <option value="20">Amable y Elegante</option>
+                 <option value="45">Fuerza de Voluntad y Tenaz</option>
+                <option value="20">Negativo</option>
+                <option value="10">Tranquilo y Estable</option>
+                 <option value="30">Timido y Sensible</option>
+                <option value="20">Tranquilo y Amable</option>
+              </select>
+           </div>
+            <div class="form-group">
+             <label for="pregunta5">¿Qué porcentaje de atención necesitas?</label>
+              <select class="form-control" name="pregunta6" required>
+                <option value="" disabled selected hidden>Elige tu respuesta</option>
+                <option value="10">25%</option>
+                <option value="10">50%</option>
+                <option value="10">75%</option>
+                <option value="10">100%</option>
+              </select>
+           </div>
+           <div class="form-group">
+             <label for="pregunta7">¿Qué celebración te emociona más?</label>
+              <select class="form-control" name="pregunta7" required>
+                <option value="" disabled selected hidden>Elige tu respuesta</option>
+                <option value="10">Navidad</option>
+                <option value="10">Halloween</option>
+                <option value="10">San Valentin</option>
+                <option value="10">Dia de Muertos</option>
+              </select>
+           </div>
+             <div class="form-group">
+             <label for="pregunta8">¿Cual de las siguientes opciones seria tu espíritu animal?</label>
+              <select class="form-control" name="pregunta8" required>
+                <option value="" disabled selected hidden>Elige tu respuesta</option>
+                <option value="5">Tigre</option>
+                <option value="25">Lobo</option>
+                <option value="60">Pantera</option>
+                <option value="50">Perro</option>
+                 <option value="50">Leon</option>
+                <option value="35">Aguila</option>
+                <option value="10">Pavo Real</option>
+                 <option value="50">Oso Panda</option>
+                <option value="45">Mono</option>
+                <option value="35">Gato</option>
+                 <option value="5">Caballo</option>
+                <option value="60">Zorro</option>
+              </select>
+           </div>
+           <div class="form-group">
+             <label for="pregunta9">¿Cuál sería tu comida favorita?</label>
+              <select class="form-control" name="pregunta9" required>
+                <option value="" disabled selected hidden>Elige tu respuesta</option>
+                <option value="15">Burrito</option>
+                <option value="15">Carne</option>
+                <option value="35">Helado</option>
+                <option value="50">Pastas</option>
+                 <option value="15">Hamburgesas</option>
+                <option value="25">Pizza</option>
+                <option value="25">Ensalada</option>
+                 <option value="25">Sushi</option>
+                <option value="10">Pastel de Chocolate</option>
+                 <option value="20">Pollo</option>
+                <option value="70">Sandwich de queso</option>
+              </select>
+           </div>
+           <div class="form-group">
+             <label for="pregunta10">¿Qué trabajo te gustaría intentar?</label>
+              <select class="form-control" name="pregunta10" required>
+                <option value="" disabled selected hidden>Elige tu respuesta</option>
+                <option value="5">Doctor</option>
+                <option value="5">Ingeniero</option>
+                <option value="15">Chef</option>
+                <option value="15">Finanzas</option>
+                 <option value="10">Periodisto</option>
+                <option value="10">Politica</option>
+                <option value="10">Maestro</option>
+                 <option value="25">Marketing</option>
+                <option value="10">Turismo</option>
+             
+              </select>
+           </div>
+          <button class="btn btn-primary btn-block">
+            Guardar Datos 
+          </button>
+        </form>
+      </div>
+  </div>
+</body>
+</html>
